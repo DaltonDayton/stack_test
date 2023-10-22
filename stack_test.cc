@@ -75,6 +75,15 @@ TEST(StackPopN, ThreeItems)
     ASSERT_EQ(stack.size(), 1);
 }
 
+// Test Pop(int n) passing in n > stackSize
+TEST(StackPopN, BigN)
+{
+    Stack<int> stack;
+    stack.push(1);
+    stack.push(2);
+    EXPECT_THROW(stack.pop(3), std::logic_error);
+}
+
 // Test Size with 0, 1, 2, and 3 items
 TEST(StackSize, MultipleItems)
 {

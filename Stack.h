@@ -67,6 +67,11 @@ Stack<Type>::~Stack()
 template <class Type>
 Stack<Type> &Stack<Type>::operator=(const Stack<Type> &other)
 {
+    if (this != &other)
+    {
+        clear();
+        deepCopy(other.head);
+    }
     return *this;
 }
 
