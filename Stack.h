@@ -96,6 +96,18 @@ void Stack<Type>::push(const Type &item)
 template <class Type>
 void Stack<Type>::pop()
 {
+    Node<Type> *temp = head;
+
+    if (head)
+    {
+        head = head->next;
+    }
+    else
+    {
+        throw std::range_error("Stack is empty");
+    }
+
+    delete temp;
 }
 
 template <class Type>
