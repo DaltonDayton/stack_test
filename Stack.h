@@ -23,7 +23,8 @@ private:
     int stackSize{0};
 
 public:
-    Stack();
+    Stack(){};
+    void deepCopy(Node<Type> *sourceNode);
     Stack(const Stack &other);
     ~Stack();
     Stack &operator=(const Stack &other);
@@ -39,13 +40,22 @@ public:
 };
 
 template <class Type>
-Stack<Type>::Stack()
+void Stack<Type>::deepCopy(Node<Type> *sourceNode)
 {
+    if (!sourceNode)
+        return;
+
+    deepCopy(sourceNode->next);
+
+    push(sourceNode->data);
 }
 
 template <class Type>
 Stack<Type>::Stack(const Stack &other)
 {
+    head = nullptr;
+    stackSize = 0;
+    deepCopy(other.head);
 }
 
 template <class Type>

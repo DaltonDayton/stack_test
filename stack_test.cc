@@ -147,3 +147,26 @@ TEST(StackClear, ThreeItems)
     stack.clear();
     ASSERT_EQ(stack.size(), 0);
 }
+
+// Test Deep Copy with no items
+TEST(StackDeepCopy, NoItems)
+{
+    Stack<int> stack01;
+    Stack<int> stack02(stack01);
+    EXPECT_EQ(stack02.size(), 0);
+}
+
+// Test Deep Copy with three items
+TEST(StackDeepCopy, ThreeItems)
+{
+    Stack<int> stack01;
+    stack01.push(3);
+    stack01.push(4);
+    stack01.push(5);
+
+    Stack<int> stack02(stack01);
+    EXPECT_EQ(stack02.size(), 3);
+    EXPECT_EQ(stack02.topPop(), 5);
+    EXPECT_EQ(stack02.topPop(), 4);
+    EXPECT_EQ(stack02.topPop(), 3);
+}
