@@ -1,3 +1,18 @@
+#include <iostream>
+
+template <class Type>
+struct Node
+{
+    Type data;
+    Node<Type> *next;
+};
+
+template <class Type>
+class Stack;
+
+template <class Type>
+std::ostream &operator<<(std::ostream &, const Stack<Type> &stack);
+
 template <class Type>
 class Stack
 {

@@ -2,7 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-    Stack stack01;
+    Stack<int> stack01;
 
     return 0;
 }
