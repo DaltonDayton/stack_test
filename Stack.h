@@ -20,7 +20,7 @@ class Stack
 {
 private:
     Node<Type> *head{nullptr};
-    int listSize{0};
+    int stackSize{0};
 
 public:
     Stack();
@@ -51,6 +51,7 @@ Stack<Type>::Stack(const Stack &other)
 template <class Type>
 Stack<Type>::~Stack()
 {
+    clear();
 }
 
 template <class Type>
@@ -62,13 +63,13 @@ Stack<Type> &Stack<Type>::operator=(const Stack<Type> &other)
 template <class Type>
 int Stack<Type>::size() const
 {
-    return listSize;
+    return stackSize;
 }
 
 template <class Type>
 bool Stack<Type>::empty() const
 {
-    return listSize == 0 ? true : false;
+    return stackSize == 0 ? true : false;
 }
 
 template <class Type>
@@ -92,7 +93,7 @@ void Stack<Type>::push(const Type &item)
         newNode->next = head;
         head = newNode;
     }
-    listSize++;
+    stackSize++;
 }
 
 template <class Type>
@@ -103,7 +104,7 @@ void Stack<Type>::pop()
     if (head)
     {
         head = head->next;
-        listSize--;
+        stackSize--;
     }
     else
     {
@@ -140,6 +141,10 @@ Type Stack<Type>::topPop()
 template <class Type>
 void Stack<Type>::clear()
 {
+    if (stackSize != 0)
+    {
+        pop(stackSize);
+    }
 }
 
 template <class Type>

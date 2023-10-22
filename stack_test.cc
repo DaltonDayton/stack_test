@@ -127,3 +127,23 @@ TEST(StackTopPop, OneItem)
     ASSERT_EQ(stack.topPop(), 2);
     ASSERT_EQ(stack.size(), 0);
 }
+
+// Test clear with no items
+TEST(StackClear, NoItems)
+{
+    Stack<int> stack;
+    stack.clear();
+    EXPECT_EQ(stack.size(), 0);
+}
+
+// Test clear with three items
+TEST(StackClear, ThreeItems)
+{
+    Stack<int> stack;
+    stack.push(3);
+    stack.push(4);
+    stack.push(5);
+    ASSERT_EQ(stack.size(), 3);
+    stack.clear();
+    ASSERT_EQ(stack.size(), 0);
+}
