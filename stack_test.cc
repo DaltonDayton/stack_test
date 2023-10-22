@@ -179,3 +179,18 @@ TEST(StackDeepCopy, ThreeItems)
     EXPECT_EQ(stack02.topPop(), 4);
     EXPECT_EQ(stack02.topPop(), 3);
 }
+
+// Test Operator<<
+TEST(StackOperatorOut, ThreeItems)
+{
+    Stack<int> stack;
+    stack.push(2);
+    stack.push(8);
+    stack.push(5);
+
+    std::stringstream ss;
+    ss << stack;
+
+    std::string expected = "2->8->5";
+    EXPECT_EQ(ss.str(), expected);
+}

@@ -36,6 +36,7 @@ public:
     void pop(int n);
     Type topPop();
     void clear();
+    void recursiveOut(std::ostream &out, Node<Type> *sourceNode);
     friend std::ostream &operator<< <>(std::ostream &, const Stack &stack);
 };
 
@@ -163,7 +164,25 @@ void Stack<Type>::clear()
 }
 
 template <class Type>
+void recursiveOut(std::ostream &out, Node<Type> *sourceNode)
+{
+    if (sourceNode)
+    {
+        recursiveOut(out, sourceNode->next);
+
+        if (sourceNode->next)
+        {
+            out << "->";
+        }
+
+        out << sourceNode->data;
+    }
+}
+
+template <class Type>
 std::ostream &operator<<(std::ostream &out, const Stack<Type> &stack)
 {
+    recursiveOut(out, stack.head);
+
     return out;
 }
