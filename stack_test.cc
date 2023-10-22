@@ -111,3 +111,19 @@ TEST(StackEmpty, ThreeItems)
     stack.empty();
     ASSERT_EQ(stack.empty(), false);
 }
+
+// Test TopPop with no items
+TEST(StackTopPop, NoItems)
+{
+    Stack<int> stack;
+    EXPECT_THROW(stack.topPop(), std::logic_error);
+}
+
+// Test TopPop with one item
+TEST(StackTopPop, OneItem)
+{
+    Stack<int> stack;
+    stack.push(2);
+    ASSERT_EQ(stack.topPop(), 2);
+    ASSERT_EQ(stack.size(), 0);
+}

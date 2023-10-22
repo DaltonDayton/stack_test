@@ -125,6 +125,16 @@ void Stack<Type>::pop(int n)
 template <class Type>
 Type Stack<Type>::topPop()
 {
+    if (head)
+    {
+        Type headData = head->data;
+        pop();
+        return headData;
+    }
+    else
+    {
+        throw std::logic_error("Stack is empty");
+    }
 }
 
 template <class Type>
