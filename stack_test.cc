@@ -25,7 +25,7 @@ TEST(StackPush, pushOneAfterEmpty)
 TEST(StackTop, Empty)
 {
     Stack<int> stack;
-    EXPECT_THROW(stack.top(), std::range_error);
+    EXPECT_THROW(stack.top(), std::logic_error);
 }
 
 // Test Top with one item in stack
@@ -40,7 +40,7 @@ TEST(StackTop, OneItem)
 TEST(StackPop, Empty)
 {
     Stack<int> stack;
-    EXPECT_THROW(stack.pop(), std::range_error);
+    EXPECT_THROW(stack.pop(), std::logic_error);
 }
 
 // Test Pop with one item in stack
@@ -49,7 +49,7 @@ TEST(StackPop, OneItem)
     Stack<int> stack;
     stack.push(2);
     stack.pop();
-    EXPECT_THROW(stack.top(), std::range_error);
+    EXPECT_THROW(stack.top(), std::logic_error);
 }
 
 // Test Pop with two items in stack
@@ -92,4 +92,22 @@ TEST(StackSize, MultipleItems)
     EXPECT_EQ(stack.size(), 1);
     stack.pop();
     EXPECT_EQ(stack.size(), 0);
+}
+
+// Test empty no items
+TEST(StackEmpty, NoItems)
+{
+    Stack<int> stack;
+    ASSERT_EQ(stack.empty(), true);
+}
+
+// Test empty three items
+TEST(StackEmpty, ThreeItems)
+{
+    Stack<int> stack;
+    stack.push(3);
+    stack.push(3);
+    stack.push(3);
+    stack.empty();
+    ASSERT_EQ(stack.empty(), false);
 }

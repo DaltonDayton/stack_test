@@ -68,13 +68,13 @@ int Stack<Type>::size() const
 template <class Type>
 bool Stack<Type>::empty() const
 {
-    return false;
+    return listSize == 0 ? true : false;
 }
 
 template <class Type>
 Type Stack<Type>::top() const
 {
-    return head ? head->data : throw std::range_error("Stack is empty");
+    return head ? head->data : throw std::logic_error("Stack is empty");
 }
 
 template <class Type>
@@ -107,7 +107,7 @@ void Stack<Type>::pop()
     }
     else
     {
-        throw std::range_error("Stack is empty");
+        throw std::logic_error("Stack is empty");
     }
 
     delete temp;
